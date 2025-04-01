@@ -2,29 +2,19 @@ package controller
 
 import (
 	"github.com/gin-gonic/gin"
+	"gitlab.com/gooderday1805/go-ecommerce-backend-api/internal/service"
 	"net/http"
 )
-
-type User struct {
-	ID       int    `json:"id"`
-	Name     string `json:"name"`
-	Email    string `json:"email"`
-	Password string `json:"password"`
+type UserController struct {
+	UserService	*service.UserService 
 }
 
-var users = []User{
-	{ID: 1, Name: "John Doe", Email: "john@example.com", Password: "password123"},
-	{ID: 2, Name: "Jane Doe", Email: "jane@example.com", Password: "password123"},
-}
-
-func GetUserById(c *gin.Context) {
-	id := c.Param("id")
-	for _, user := range users {
-		if user.ID == id {
-			c.JSON(http.StatusOK, user)
-			return
-		}
+func NewUserController() *UserController {
+	return &UserController{
+		UserService: service.NewUserService(),
 	}
-	c.JSON(http.StatusNotFound, gin.H{"message": "User not found"})
 }
 
+func (uc *UserController) GetUserById(c *gin.Context) {
+	c.JSON(http.StatusOK, uc.UserService.GetInforUsers())
+}

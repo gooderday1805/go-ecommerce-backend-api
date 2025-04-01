@@ -3,7 +3,7 @@ package routers
 // Trong GO muốn package khác muốn gọi thì function phải viết hoa chữ đầu
 import (
 	"github.com/gin-gonic/gin"
-	"github.com/gooderday1805/go-ecommerce-backend-api/internal/controller/user"
+	Controller "github.com/gooderday1805/go-ecommerce-backend-api/internal/controller"
 )
 
 func NewRouters() *gin.Engine {
@@ -11,10 +11,8 @@ func NewRouters() *gin.Engine {
 
 	v1 := r.Group("/api/v1")
 	{
-		v1.GET("/users/:id", user.GetUserById)
-		// v1.POST("/users", createUser)
-		// v1.GET("/products", getProducts)
-		// v1.POST("/products", createProduct)
+		v1.GET("/users/:id", Controller.NewUserController().GetUserById)
+		v1.GET("/productsproducts", Controller.GetProductById)
 	}
 
 	return r
