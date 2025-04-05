@@ -9,9 +9,16 @@ import (
 func NewRouters() *gin.Engine {
 	r := gin.Default()
 
+	// Create a new user controller
+	userController := Controller.NewUserController()
+
 	v1 := r.Group("/api/v1")
 	{
-		v1.GET("/users/:id", Controller.NewUserController().GetUserById)
+		// User routes
+		v1.GET("/users/:id", userController.GetUserById)
+		v1.POST("/register", userController.Register)
+
+		// Product routes
 		v1.GET("/productsproducts", Controller.GetProductById)
 	}
 

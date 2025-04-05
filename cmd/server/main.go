@@ -2,24 +2,18 @@ package main
 
 import (
 	"log"
-	"net/http"
 	"github.com/gin-contrib/cors"
-	"github.com/gin-gonic/gin"
+	"github.com/gooderday1805/go-ecommerce-backend-api/internal/routers"
 )
 
 func main() {
-	// Tạo router Gin
-	r := gin.Default()
+	// Create router using our router configuration
+	r := routers.NewRouters()
 
-	// Thêm CORS middleware để tránh lỗi khi gọi API từ trình duyệt/Postman
+	// Add CORS middleware to avoid errors when calling API from browser/Postman
 	r.Use(cors.Default())
 
-	// Định nghĩa route GET /ping
-	r.GET("/ping", func(c *gin.Context) {
-		c.JSON(http.StatusOK, gin.H{"message": "pong"})
-	})
-
-	// Chạy server trên cổng 8080, lắng nghe trên tất cả địa chỉ IP
+	// Run server on port 8080, listening on all IP addresses
 	port := ":8080"
 	log.Printf("Server is running on http://localhost%s\n", port)
 	if err := r.Run(port); err != nil {
