@@ -1,0 +1,2 @@
+{"Level":"INFO","Time":"2025-04-10T01:19:47.814+0700","Caller":"runtime/proc.go:272","Message":"Info Log","Line":1}
+{"Level":"ERROR","Time":"2025-04-10T01:19:47.815+0700","Caller":"runtime/proc.go:272","Message":"Error Log","Error":"Something went wrong"}
