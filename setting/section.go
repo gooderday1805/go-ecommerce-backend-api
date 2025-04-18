@@ -1,7 +1,8 @@
 package setting
 
 type Config struct {
-	Mysql MySqlSetting `mapstructure:"mysql"`
+	Mysql  MySqlSetting `mapstructure:"mysql"`
+	Server Server       `mapstructure:"server"`
 }
 
 type MySqlSetting struct {
@@ -13,4 +14,8 @@ type MySqlSetting struct {
 	MaxIdleConns    int    `mapstructure:"max_idle_conns"`
 	MaxOpenConns    int    `mapstructure:"max_open_conns"`
 	ConnMaxLifetime int    `mapstructure:"conn_max_lifetime"`
+}
+
+type Server struct {
+	Port int `mapstructure:"port"`
 }
