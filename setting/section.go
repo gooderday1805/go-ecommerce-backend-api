@@ -3,6 +3,7 @@ package setting
 type Config struct {
 	Mysql  MySqlSetting `mapstructure:"mysql"`
 	Server Server       `mapstructure:"server"`
+	Logger Logger       `mapstructure:"log"`
 }
 
 type MySqlSetting struct {
@@ -18,4 +19,9 @@ type MySqlSetting struct {
 
 type Server struct {
 	Port int `mapstructure:"port"`
+}
+
+type Logger struct {
+	Level string `mapstructure:"level"`
+	Env   string `mapstructure:"env"`
 }
