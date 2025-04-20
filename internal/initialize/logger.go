@@ -1,9 +1,18 @@
 package initialize
 
 import (
-	// "github.com/gooderday1805/go-ecommerce-backend-api/pkg/logger"
-	// "github.com/gooderday1805/go-ecommerce-backend-api/global"
+	"log"
+
+	"github.com/gooderday1805/go-ecommerce-backend-api/global"
+	"github.com/gooderday1805/go-ecommerce-backend-api/pkg/logger"
 )
+
 func InitLogger() {
-	
+	zapLogger, err := logger.NewLogger(global.Config.Logger.Level, global.Config.Logger.Env == "dev")
+	if err != nil {
+		log.Fatalf("initialization log fail: %v", err)
+	}
+
+	global.Logger = zapLogger
+	global.Logger.Info("📄 STARTED LOG::::")
 }
