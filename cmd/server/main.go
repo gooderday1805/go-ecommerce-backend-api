@@ -5,7 +5,5 @@ import (
 )
 
 func main() {
-	
-	// Run the application
 	initialize.Run()
 }

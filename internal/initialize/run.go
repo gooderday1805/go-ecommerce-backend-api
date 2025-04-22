@@ -2,16 +2,30 @@ package initialize
 
 import (
 	"fmt"
+	"log"
 
 	"github.com/gooderday1805/go-ecommerce-backend-api/global"
 )
 
 func Run() {
+	bootstrap()
+	startServer()
+}
+
+func bootstrap() {
 	LoadConfig()
 	InitLogger()
 	InitMysql()
 	InitRedis()
+}
 
+func startServer() {
 	r := InitRouter()
-	r.Run(fmt.Sprintf("Router is running on: %d", global.Config.Server.Port))
+
+	addr := fmt.Sprintf(":%d", global.Config.Server.Port)
+	log.Printf("🚀 Server is running at %s\n", global.Config.Server.Host+addr)
+
+	if err := r.Run(addr); err != nil {
+		log.Fatalf("❌ Failed to run server: %v", err)
+	}
 }

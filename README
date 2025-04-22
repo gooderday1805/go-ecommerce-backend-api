@@ -1,0 +1,14 @@
+# Go Ecommerce Backend API
+
+## Stack
+
+*   **Go:** The primary programming language.
+*   **Gin:** Web framework for building APIs.
+*   **GORM:** ORM library for database interactions.
+*   **MySQL:** Database.
+*   **Redis:** Cache.
+*   **Zap:** Logging.
+
+## GORM
+
+This project uses GORM as the ORM for interacting with the database.

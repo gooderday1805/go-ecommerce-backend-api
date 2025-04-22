@@ -1,10 +1,11 @@
 package controller
 
 import (
+	"net/http"
+
 	"github.com/gin-gonic/gin"
 	"github.com/gooderday1805/go-ecommerce-backend-api/internal/models"
 	"github.com/gooderday1805/go-ecommerce-backend-api/internal/service"
-	"net/http"
 )
 
 type UserController struct {

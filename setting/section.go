@@ -18,7 +18,8 @@ type MySqlSetting struct {
 }
 
 type Server struct {
-	Port int `mapstructure:"port"`
+	Port int    `mapstructure:"port"`
+	Host string `mapstructure:"host"`
 }
 
 type Logger struct {
