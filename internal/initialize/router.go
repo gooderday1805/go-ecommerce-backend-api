@@ -16,7 +16,7 @@ func InitRouter() *gin.Engine {
 		v1.POST("/register", userController.Register)
 
 		// Product routes
-		v1.GET("/productsproducts", Controller.GetProductById)
+		v1.GET("/products/:id", Controller.GetProductById)
 	}
 
 	return r
