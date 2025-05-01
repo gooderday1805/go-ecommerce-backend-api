@@ -10,9 +10,8 @@ import (
 func InitLogger() {
 	zapLogger, err := logger.NewLogger(global.Config.Logger.Level, global.Config.Logger.Env == "dev")
 	if err != nil {
-		log.Fatalf("initialization log fail: %v", err)
+		log.Fatalf("Initialization log fail: %v", err)
 	}
 
 	global.Logger = zapLogger
-	global.Logger.Info("📄 STARTED LOG::::")
 }

@@ -13,10 +13,25 @@ func Run() {
 }
 
 func bootstrap() {
+	log.Println("🔧 Starting bootstrap process...")
+
+	log.Println("📦 Loading config...")
 	LoadConfig()
+	log.Println("✅ Config loaded successfully")
+
+	log.Println("📝 Initializing logger...")
 	InitLogger()
+	log.Println("✅ Logger initialized")
+
+	log.Println("🐬 Connecting to MySQL...")
 	InitMysql()
+	log.Println("✅ MySQL connected")
+
+	log.Println("🧠 Connecting to Redis...")
 	InitRedis()
+	log.Println("✅ Redis connected")
+
+	log.Println("🏁 Bootstrap process finished")
 }
 
 func startServer() {

@@ -26,7 +26,7 @@ func InitMysql() {
 		SkipDefaultTransaction: false,
 	})
 
-	// check error
+	// check Error
 	checkErrorPanic(err, "Initialize mysql failed")
 
 	global.Logger.Info("Initialize mysql success")
@@ -34,6 +34,7 @@ func InitMysql() {
 
 	// set Pool
 	SetPool()
+	migrateTable()
 }
 
 func SetPool() {
@@ -43,7 +44,7 @@ func SetPool() {
 		fmt.Println("mysql err:: %s", err)
 	}
 
-	// optimize db
+	// optimize DB
 	// kết nối rảnh rỗi sẽ đc giữ lại
 	sqlDb.SetConnMaxIdleTime(time.Duration(m.MaxIdleConns))
 
@@ -60,6 +61,6 @@ func migrateTable() {
 		&po.Role{},
 	)
 	if err != nil {
-		fmt.Println("Migration DB Error",err)
+		fmt.Println("Migration DB Error", err)
 	}
 }
